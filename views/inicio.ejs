@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscador de Soluciones de IA</title>
+  <link rel="stylesheet" href="Css/estilos.css">
+</head>
+<body>
+  		<!-- Barra superior -->
+      <header>
+        <nav>
+          <% if (user) { %>
+            <!-- Si el usuario está logueado, muestra su nombre -->
+            <li>Hola, <%= user.username %>!</li>
+            <li><a href="/auth/logout">Logout</a></li> <!-- Enlace para cerrar sesión -->
+          <% } else { %>
+            <!-- Si el usuario no está logueado, muestra los botones de login/signup -->
+            <li><a href="/auth/login">Login</a></li>
+            <li><a href="/auth/signup">Sign Up</a></li>
+          <% } %>
+        </nav>
+      </header>
+  <!-- Logo -->
+  <div class="logo">
+    <a href="/">
+      <img src="images/Logo.png" alt="Logo Cristal" class="logo-img">
+    </a>
+  </div>
+
+  <!-- Contenedor principal -->
+  <div class="contenedor_titulo">
+    <h1 class="titulo">Buscador de Soluciones de IA</h1>
+  </div>
+
+  <!-- Barra de búsqueda -->
+  <div class="input-group">
+    <select id="categoriaSelect" class="form-control">
+      <option value="">Seleccionar Categoría</option>
+    </select>
+    <select id="precioSelect" class="form-control">
+      <option value="">Seleccionar Precio</option>
+      <option value="gratis">Gratis</option>
+      <option value="pago">Pago</option>
+      <option value="freemium">Freemium</option>
+    </select>
+    <input type="text" class="form-control" id="searchInput" placeholder="Buscar soluciones de IA...">
+    <button id="buscarBtn" class="btn">Buscar</button>
+  </div>
+
+  <!-- Resultados -->
+  <ul id="searchResults" class="resultados list-group"></ul>
+
+  <!-- Modal para descripción ampliada -->
+  <div id="descripcionModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <button class="close" id="closeBtn">x</button> <!-- Botón para cerrar -->
+      <h2 id="modalTitulo"></h2>
+      <p id="modalDescripcion"></p>
+    </div>
+  </div>
+
+  <!-- Recomendaciones -->
+  <div class="contenedor_recomendaciones">
+    <h2>Recomendaciones</h2>
+    <div id="contenedorRecomendaciones">Cargando recomendaciones...</div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="Scripts/script.js"></script>
+</body>
+</html>
